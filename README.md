@@ -13,4 +13,4 @@ High jump,you can change direction when you are in the air
 
 you can shoot when you are in the air
 
-few models of the enemy
+few models of the enemy with mechanics
