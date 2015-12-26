@@ -23,7 +23,7 @@
 int main(int, char const**)
 {
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Platformer");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "test commit");
 
     // Set the Icon
     sf::Image icon;
