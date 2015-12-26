@@ -1,6 +1,6 @@
 # platformer
 Type:Platformer
-version: 0.01
+version: 0.02
 Level editor = true;
 
 Name: ?
