@@ -13,6 +13,9 @@
 		87770A181C2F4B61002CFC56 /* nice_music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 87770A171C2F4B61002CFC56 /* nice_music.ogg */; };
 		87770A1A1C2F4B61002CFC56 /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87770A191C2F4B61002CFC56 /* sansation.ttf */; };
 		87770A1C1C2F4B61002CFC56 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 87770A1B1C2F4B61002CFC56 /* icon.png */; };
+		87770D401C2F5382002CFC56 /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87770D3E1C2F5382002CFC56 /* GameManager.cpp */; };
+		87770D431C2F5AA7002CFC56 /* Board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87770D411C2F5AA7002CFC56 /* Board.cpp */; };
+		87770D461C2F6796002CFC56 /* Menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87770D441C2F6796002CFC56 /* Menu.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,12 @@
 		87770A171C2F4B61002CFC56 /* nice_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = nice_music.ogg; sourceTree = "<group>"; };
 		87770A191C2F4B61002CFC56 /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sansation.ttf; sourceTree = "<group>"; };
 		87770A1B1C2F4B61002CFC56 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		87770D3E1C2F5382002CFC56 /* GameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
+		87770D3F1C2F5382002CFC56 /* GameManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameManager.hpp; sourceTree = "<group>"; };
+		87770D411C2F5AA7002CFC56 /* Board.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Board.cpp; sourceTree = "<group>"; };
+		87770D421C2F5AA7002CFC56 /* Board.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Board.hpp; sourceTree = "<group>"; };
+		87770D441C2F6796002CFC56 /* Menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Menu.cpp; sourceTree = "<group>"; };
+		87770D451C2F6796002CFC56 /* Menu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Menu.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +50,7 @@
 		87770A001C2F4B61002CFC56 = {
 			isa = PBXGroup;
 			children = (
-				87770A0C1C2F4B61002CFC56 /* Platformer */,
+				87770A0C1C2F4B61002CFC56 /* 	 */,
 				87770A0B1C2F4B61002CFC56 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,15 +63,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		87770A0C1C2F4B61002CFC56 /* Platformer */ = {
+		87770A0C1C2F4B61002CFC56 /* 	 */ = {
 			isa = PBXGroup;
 			children = (
+				87770D441C2F6796002CFC56 /* Menu.cpp */,
+				87770D451C2F6796002CFC56 /* Menu.hpp */,
+				87770D411C2F5AA7002CFC56 /* Board.cpp */,
+				87770D421C2F5AA7002CFC56 /* Board.hpp */,
+				87770D3E1C2F5382002CFC56 /* GameManager.cpp */,
+				87770D3F1C2F5382002CFC56 /* GameManager.hpp */,
 				87770A0F1C2F4B61002CFC56 /* ResourcePath.mm */,
 				87770A111C2F4B61002CFC56 /* ResourcePath.hpp */,
 				87770A121C2F4B61002CFC56 /* main.cpp */,
 				87770A141C2F4B61002CFC56 /* Resources */,
 				87770A0D1C2F4B61002CFC56 /* Supporting Files */,
 			);
+			name = "	";
 			path = Platformer;
 			sourceTree = "<group>";
 		};
@@ -173,7 +189,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				87770A131C2F4B61002CFC56 /* main.cpp in Sources */,
+				87770D401C2F5382002CFC56 /* GameManager.cpp in Sources */,
+				87770D431C2F5AA7002CFC56 /* Board.cpp in Sources */,
 				87770A101C2F4B61002CFC56 /* ResourcePath.mm in Sources */,
+				87770D461C2F6796002CFC56 /* Menu.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +330,7 @@
 				87770A211C2F4B61002CFC56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
