@@ -66,7 +66,8 @@ void Menu::draw(sf::RenderWindow* window)
 
 void Menu::update()
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) ||
+        sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
     {
         switch (state) {
             case MenuState::newGame:
