@@ -12,6 +12,7 @@
 const int FRAME_LIMIT = 60;
 const int BOARD_HEIGHT = 1080;
 const int BOARD_WIDTH = 1920;
+const int TO_NEXT_CHANGE = 8;
 
 
 #endif /* Config_h */

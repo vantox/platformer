@@ -7,6 +7,7 @@
 //
 
 #include "Menu.hpp"
+#include "Config.hpp"
 #include <iostream>
 Menu::Menu()
 {
@@ -87,12 +88,12 @@ void Menu::update()
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         {
             state = MenuState( (state + 1) % 4);
-            toNextChange = 120;
+            toNextChange = TO_NEXT_CHANGE;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
             state = MenuState( (state + 3) % 4);
-            toNextChange = 120;
+            toNextChange = TO_NEXT_CHANGE;
         }
     }
 }
