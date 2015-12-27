@@ -26,6 +26,7 @@ private:
     GameState gameState;
     sf::RenderWindow* mainWindow;
     sf::View* mainView;
+    sf::Image* icon;
     Menu* menu;
     Board* board;
     static GameManager* instance;

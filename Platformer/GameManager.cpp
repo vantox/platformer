@@ -9,6 +9,8 @@
 #include "GameManager.hpp"
 #include "ResourcePath.hpp"
 
+#include "Config.hpp"
+
 #include "Board.hpp"
 #include "Menu.hpp"
 
@@ -16,17 +18,15 @@ GameManager* GameManager::instance = nullptr;
 
 GameManager::GameManager(){
     gameState = GameState::menu;
-    mainWindow = new sf::RenderWindow(sf::VideoMode(1920, 1080), "test commit");
+    mainWindow = new sf::RenderWindow(sf::VideoMode(BOARD_WIDTH, BOARD_HEIGHT), "Platformer");
     mainView = new sf::View();
     board = new Board();
     menu = new Menu();
-    
-    // Set the Icon
-    sf::Image icon;
-    if (!icon.loadFromFile(resourcePath() + "icon.png")) {
+    icon = new sf::Image();
+    if (!icon->loadFromFile(resourcePath() + "icon.png")) {
         return EXIT_FAILURE;
     }
-    mainWindow->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+    mainWindow->setIcon(icon->getSize().x, icon->getSize().y, icon->getPixelsPtr());
     
 }
 
@@ -39,6 +39,7 @@ GameManager* GameManager::get(){
 }
 
 void GameManager::startGame(){
+    mainWindow->setFramerateLimit(FRAME_LIMIT);
     while (mainWindow->isOpen())
     {
         // Process events
@@ -69,7 +70,7 @@ void GameManager::startGame(){
         mainWindow->clear();
         
         // Draw the sprite
-        //mainWindow->draw(sprite);
+        
         switch(gameState){
             case GameState::game:
                 board->update();
