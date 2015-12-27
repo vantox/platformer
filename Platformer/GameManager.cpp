@@ -11,7 +11,7 @@
 
 #include "Config.hpp"
 
-#include "Board.hpp"
+#include "Game.hpp"
 #include "Menu.hpp"
 
 GameManager* GameManager::instance = nullptr;
@@ -20,7 +20,7 @@ GameManager::GameManager(){
     gameState = GameState::menu;
     mainWindow = new sf::RenderWindow(sf::VideoMode(BOARD_WIDTH, BOARD_HEIGHT), "Platformer");
     mainView = new sf::View();
-    board = new Board();
+    game = new Game();
     menu = new Menu();
     icon = new sf::Image();
     if (!icon->loadFromFile(resourcePath() + "icon.png")) {
@@ -73,8 +73,8 @@ void GameManager::startGame(){
         
         switch(gameState){
             case GameState::game:
-                board->update();
-                board->draw(mainWindow);
+                game->update();
+                game->draw(mainWindow);
                 break;
             case GameState::menu:
                 menu->update();

@@ -16,6 +16,10 @@
 		87770D401C2F5382002CFC56 /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87770D3E1C2F5382002CFC56 /* GameManager.cpp */; };
 		87770D431C2F5AA7002CFC56 /* Board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87770D411C2F5AA7002CFC56 /* Board.cpp */; };
 		87770D461C2F6796002CFC56 /* Menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87770D441C2F6796002CFC56 /* Menu.cpp */; };
+		87770D4A1C301950002CFC56 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87770D481C301950002CFC56 /* Game.cpp */; };
+		87770D4D1C301C3F002CFC56 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87770D4B1C301C3F002CFC56 /* Object.cpp */; };
+		87770D501C302231002CFC56 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87770D4E1C302231002CFC56 /* Player.cpp */; };
+		87770D541C304953002CFC56 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 87770D531C304953002CFC56 /* player.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,13 @@
 		87770D441C2F6796002CFC56 /* Menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Menu.cpp; sourceTree = "<group>"; };
 		87770D451C2F6796002CFC56 /* Menu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Menu.hpp; sourceTree = "<group>"; };
 		87770D471C2F6E34002CFC56 /* Config.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
+		87770D481C301950002CFC56 /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		87770D491C301950002CFC56 /* Game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
+		87770D4B1C301C3F002CFC56 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
+		87770D4C1C301C3F002CFC56 /* Object.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Object.hpp; sourceTree = "<group>"; };
+		87770D4E1C302231002CFC56 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		87770D4F1C302231002CFC56 /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		87770D531C304953002CFC56 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +79,12 @@
 			isa = PBXGroup;
 			children = (
 				87770D471C2F6E34002CFC56 /* Config.hpp */,
+				87770D4E1C302231002CFC56 /* Player.cpp */,
+				87770D4F1C302231002CFC56 /* Player.hpp */,
+				87770D4B1C301C3F002CFC56 /* Object.cpp */,
+				87770D4C1C301C3F002CFC56 /* Object.hpp */,
+				87770D481C301950002CFC56 /* Game.cpp */,
+				87770D491C301950002CFC56 /* Game.hpp */,
 				87770D441C2F6796002CFC56 /* Menu.cpp */,
 				87770D451C2F6796002CFC56 /* Menu.hpp */,
 				87770D411C2F5AA7002CFC56 /* Board.cpp */,
@@ -95,6 +112,7 @@
 		87770A141C2F4B61002CFC56 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				87770D531C304953002CFC56 /* player.png */,
 				87770A151C2F4B61002CFC56 /* cute_image.jpg */,
 				87770A171C2F4B61002CFC56 /* nice_music.ogg */,
 				87770A191C2F4B61002CFC56 /* sansation.ttf */,
@@ -161,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87770A1C1C2F4B61002CFC56 /* icon.png in Resources */,
+				87770D541C304953002CFC56 /* player.png in Resources */,
 				87770A1A1C2F4B61002CFC56 /* sansation.ttf in Resources */,
 				87770A181C2F4B61002CFC56 /* nice_music.ogg in Resources */,
 				87770A161C2F4B61002CFC56 /* cute_image.jpg in Resources */,
@@ -190,9 +209,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87770D501C302231002CFC56 /* Player.cpp in Sources */,
 				87770A131C2F4B61002CFC56 /* main.cpp in Sources */,
 				87770D401C2F5382002CFC56 /* GameManager.cpp in Sources */,
 				87770D431C2F5AA7002CFC56 /* Board.cpp in Sources */,
+				87770D4A1C301950002CFC56 /* Game.cpp in Sources */,
+				87770D4D1C301C3F002CFC56 /* Object.cpp in Sources */,
 				87770A101C2F4B61002CFC56 /* ResourcePath.mm in Sources */,
 				87770D461C2F6796002CFC56 /* Menu.cpp in Sources */,
 			);

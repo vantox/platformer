@@ -18,7 +18,7 @@ enum GameState
     game = 1
 };
 
-class Board;
+class Game;
 class Menu;
 
 class GameManager{
@@ -27,8 +27,8 @@ private:
     sf::RenderWindow* mainWindow;
     sf::View* mainView;
     sf::Image* icon;
+    Game* game;
     Menu* menu;
-    Board* board;
     static GameManager* instance;
     GameManager();
     
