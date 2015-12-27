@@ -88,3 +88,7 @@ void GameManager::startGame(){
         mainWindow->display();
     }
 }
+
+void GameManager::setGameState(GameState state){
+    gameState = state;
+}

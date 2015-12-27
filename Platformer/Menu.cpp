@@ -8,11 +8,12 @@
 
 #include "Menu.hpp"
 #include <iostream>
+#include "ResourcePath.hpp"
 Menu::Menu()
 {
     toNextChange = 0;
     
-    if (!font.loadFromFile("/Users/Piotrek/Documents/Programming/platformer/Platformer/sansation.ttf"))
+    if (!font.loadFromFile(resourcePath() + "sansation.ttf"))
     {
         std::cout << "Font not loaded";
     }
@@ -69,6 +70,7 @@ void Menu::update()
         switch (state) {
             case MenuState::newGame:
                 //odpal gre
+               GameManager::get()->setGameState(GameState::game);
                 break;
             case MenuState::loadGame:
                 //wczytaj gre

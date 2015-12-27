@@ -36,6 +36,7 @@ private:
 public:
     static GameManager* get();
     void startGame();
+    void setGameState(GameState state);
     
 };
 
