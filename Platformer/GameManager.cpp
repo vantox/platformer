@@ -18,7 +18,7 @@ GameManager* GameManager::instance = nullptr;
 
 GameManager::GameManager(){
     gameState = GameState::menu;
-    mainWindow = new sf::RenderWindow(sf::VideoMode(BOARD_WIDTH, BOARD_HEIGHT), "Platformer");
+    mainWindow = new sf::RenderWindow(sf::VideoMode(BOARD_WIDTH, BOARD_HEIGHT), "Platformer", sf::Style::Resize);
     mainView = new sf::View();
     game = new Game();
     menu = new Menu();

@@ -30,6 +30,7 @@ protected:
     
     bool isMoving;
     bool isJumping;
+    bool changedDirection;
     Direction direction;
     sf::Vector2f position;
     

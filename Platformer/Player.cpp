@@ -20,6 +20,7 @@ Player::Player(sf::Vector2f position, std::string name) : Object(position){
     }
     idleSprite = new sf::Sprite();
     idleSprite->setTexture(*idleTexture);
+//    idleSprite->setOrigin(idleSprite->getGlobalBounds().width / 2, idleSprite->getGlobalBounds().height / 2);
     idleSprite->setTextureRect(sf::IntRect(19,19,15,27));
     jumpSprite= new sf::Sprite();
     jumpSprite->setTexture(*idleTexture);
@@ -35,24 +36,43 @@ Player::Player(sf::Vector2f position, std::string name) : Object(position){
 
 void Player::update()
 {
+    if(position.x < 100)
+        std::cout << position.x << "," << position.y << "\n";
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
         position.x -= 1;
+        if(direction == Direction::Right){
+            changedDirection = true;
+            position.x += idleSprite->getGlobalBounds().width;
+            idleSprite->scale(-1.f, 1.f);
+            for(sf::Sprite* sprite : movementSprite){
+                sprite->scale(-1.f, 1.f);
+            }
+               
+            
+        }
         direction = Direction::Left;
         isMoving = true;
     }
-    else
-        isMoving = false;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
         position.x += 1;
+        if(direction == Direction::Left){
+            changedDirection = true;
+            position.x -= idleSprite->getGlobalBounds().width;
+            idleSprite->scale(-1.f, 1.f);
+            for(sf::Sprite* sprite : movementSprite){
+                sprite->scale(-1.f, 1.f);
+            }
+        }
         direction = Direction::Right;
         isMoving = true;
     }
-    else
+    else {
         isMoving = false;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-    {
+    }
+        
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
         
         if (jumpTime == 0) {
             jumpTime = 60;
