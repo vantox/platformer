@@ -21,7 +21,7 @@ Menu::Menu()
     state = MenuState::newGame;
     for (int i = 3; i > -1;i-- ) {
         text[i].setFont(font);
-        text[i].setCharacterSize(200);
+        text[i].setCharacterSize(BOARD_HEIGHT / 5);
         text[i].setColor(sf::Color::White);
     }
     text[0].setString("NEW GAME");
@@ -56,12 +56,16 @@ void Menu::draw(sf::RenderWindow* window)
     }
     
     for (int i = 3; i > -1; i--) {
+        //std::cout << text[3].getGlobalBounds().height <<
+        //text[3].getGlobalBounds().width << std::endl;
      window->draw(text[i]);
     }
-    text[0].setPosition(437, 62);
-    text[1].setPosition(387, 311);
-    text[2].setPosition(601, 555);
-    text[3].setPosition(762, 800);
+    
+    
+    text[0].setPosition(0, 15);
+    text[1].setPosition(0, 56);
+    text[2].setPosition(0, 96);
+    text[3].setPosition(0, 138);
 }
 
 void Menu::update()

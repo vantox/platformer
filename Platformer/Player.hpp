@@ -15,6 +15,7 @@
 
 class Player : public Object{
 private:
+    int jumpTime;
     int maxHp;
     int hp;
     sf::String name;

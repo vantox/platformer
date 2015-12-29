@@ -20,6 +20,21 @@ Object::Object(sf::Vector2f position){
 }
 
 void Object::draw(sf::RenderWindow* window){
-    window->draw(*idleSprite);
-    idleSprite->setPosition(position);
+    
+    if (isJumping) {
+        window->draw(*jumpSprite);
+        jumpSprite->setPosition(position);
+    }else {
+        if (isMoving && direction == Direction::Right) {
+            window->draw(*movementSprite[movementFrame]);
+            movementSprite[movementFrame]->setPosition(position);
+        }else
+        {
+            window->draw(*idleSprite);
+            idleSprite->setPosition(position);
+        }
+        
+            
+        
+    }
 }

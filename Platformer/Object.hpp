@@ -20,6 +20,7 @@ enum Direction{
 
 class Object{
 protected:
+    int movementFrame;
     sf::Texture* idleTexture;
     std::vector<sf::Texture*> movementTexture;
     sf::Texture* jumpTexture;

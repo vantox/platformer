@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		242828161C304D5700CF244C /* player1.png in Resources */ = {isa = PBXBuildFile; fileRef = 242828151C304D5700CF244C /* player1.png */; };
 		87770A101C2F4B61002CFC56 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87770A0F1C2F4B61002CFC56 /* ResourcePath.mm */; };
 		87770A131C2F4B61002CFC56 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87770A121C2F4B61002CFC56 /* main.cpp */; };
 		87770A161C2F4B61002CFC56 /* cute_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87770A151C2F4B61002CFC56 /* cute_image.jpg */; };
@@ -19,10 +20,10 @@
 		87770D4A1C301950002CFC56 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87770D481C301950002CFC56 /* Game.cpp */; };
 		87770D4D1C301C3F002CFC56 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87770D4B1C301C3F002CFC56 /* Object.cpp */; };
 		87770D501C302231002CFC56 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87770D4E1C302231002CFC56 /* Player.cpp */; };
-		87770D541C304953002CFC56 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 87770D531C304953002CFC56 /* player.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		242828151C304D5700CF244C /* player1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player1.png; sourceTree = "<group>"; };
 		87770A0A1C2F4B61002CFC56 /* Platformer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Platformer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87770A0E1C2F4B61002CFC56 /* Platformer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Platformer-Info.plist"; sourceTree = "<group>"; };
 		87770A0F1C2F4B61002CFC56 /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
@@ -45,7 +46,6 @@
 		87770D4C1C301C3F002CFC56 /* Object.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Object.hpp; sourceTree = "<group>"; };
 		87770D4E1C302231002CFC56 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		87770D4F1C302231002CFC56 /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
-		87770D531C304953002CFC56 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +112,7 @@
 		87770A141C2F4B61002CFC56 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				87770D531C304953002CFC56 /* player.png */,
+				242828151C304D5700CF244C /* player1.png */,
 				87770A151C2F4B61002CFC56 /* cute_image.jpg */,
 				87770A171C2F4B61002CFC56 /* nice_music.ogg */,
 				87770A191C2F4B61002CFC56 /* sansation.ttf */,
@@ -179,9 +179,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				87770A1C1C2F4B61002CFC56 /* icon.png in Resources */,
-				87770D541C304953002CFC56 /* player.png in Resources */,
 				87770A1A1C2F4B61002CFC56 /* sansation.ttf in Resources */,
 				87770A181C2F4B61002CFC56 /* nice_music.ogg in Resources */,
+				242828161C304D5700CF244C /* player1.png in Resources */,
 				87770A161C2F4B61002CFC56 /* cute_image.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
