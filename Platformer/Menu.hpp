@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "GameManager.hpp"
 
+
 enum MenuState
 {
     newGame = 0,
@@ -23,6 +24,7 @@ enum MenuState
 
 class Menu{
 private:
+    float windowHeight;
     int toNextChange;
     sf::Font font;
     sf::Text text[4];

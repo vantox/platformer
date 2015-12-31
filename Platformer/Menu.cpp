@@ -13,7 +13,7 @@
 Menu::Menu()
 {
     toNextChange = 0;
-    
+    windowHeight = BOARD_HEIGHT;
     if (!font.loadFromFile(resourcePath() + "sansation.ttf"))
     {
         std::cout << "Font not loaded";
@@ -54,18 +54,19 @@ void Menu::draw(sf::RenderWindow* window)
         default:
             break;
     }
-    
+    windowHeight = BOARD_HEIGHT;
     for (int i = 3; i > -1; i--) {
         //std::cout << text[3].getGlobalBounds().height <<
         //text[3].getGlobalBounds().width << std::endl;
      window->draw(text[i]);
+        windowHeight -= text[i].getGlobalBounds().height;
     }
+    windowHeight = windowHeight / 5;
     
-    
-    text[0].setPosition(0, 15);
-    text[1].setPosition(0, 56);
-    text[2].setPosition(0, 96);
-    text[3].setPosition(0, 138);
+    text[0].setPosition(0, windowHeight);
+    text[1].setPosition(0, windowHeight *2 + text[0].getGlobalBounds().height);
+    text[2].setPosition(0, 3*windowHeight + text[0].getGlobalBounds().height + text[1].getGlobalBounds().height);
+    text[3].setPosition(0, 4 * windowHeight + text[0].getGlobalBounds().height + text[1].getGlobalBounds().height + text[2].getGlobalBounds().height);
 }
 
 void Menu::update()

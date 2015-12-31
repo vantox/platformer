@@ -9,9 +9,9 @@
 #ifndef Config_h
 #define Config_h
 
-const int FRAME_LIMIT = 60;
-const int BOARD_HEIGHT = 180;
-const int BOARD_WIDTH = 320;
+const int FRAME_LIMIT = 24;
+const int BOARD_HEIGHT = 540;
+const int BOARD_WIDTH = 960;
 const int TO_NEXT_CHANGE = 8;
 const int PLAYER_MAX_HP = 100;
 const int PLAYER_SPEED = 1;

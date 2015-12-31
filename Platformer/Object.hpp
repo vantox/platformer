@@ -22,7 +22,8 @@ class Object{
 protected:
     int movementFrame;
     sf::Texture* idleTexture;
-    std::vector<sf::Texture*> movementTexture;
+    //std::vector<sf::Texture*> movementTexture;
+    sf::Texture* movementTexture;
     sf::Texture* jumpTexture;
     sf::Sprite* idleSprite;
     std::vector<sf::Sprite*> movementSprite;
