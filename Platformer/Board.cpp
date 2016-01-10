@@ -12,7 +12,7 @@
 
 Board::Board(){
     background_texture = new sf::Texture();
-    if(!background_texture->loadFromFile(resourcePath()+"cute_image.jpg")){
+    if(!background_texture->loadFromFile(resourcePath()+"background.jpg")){
         std::cout << "nie załadowało się";
     }
     background = new sf::Sprite();

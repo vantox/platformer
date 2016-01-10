@@ -13,8 +13,9 @@
 Player::Player(sf::Vector2f position, std::string name) : Object(position){
     jumpTime = 0;
     movementFrame = 0;
+    idleFrame = 0;
     idleTexture  = new sf::Texture();
-    if (!idleTexture->loadFromFile(resourcePath() + "player1.png"))
+    if (!idleTexture->loadFromFile(resourcePath() + "Idle.png"))
     {
         std::cout << "Player texture not loaded";
     }
@@ -23,10 +24,6 @@ Player::Player(sf::Vector2f position, std::string name) : Object(position){
     {
         std::cout << "Player texture not loaded";
     }
-    idleSprite = new sf::Sprite();
-    idleSprite->setTexture(*idleTexture);
-//    idleSprite->setOrigin(idleSprite->getGlobalBounds().width / 2, idleSprite->getGlobalBounds().height / 2);
-    idleSprite->setTextureRect(sf::IntRect(19,19,15,27));
     jumpSprite= new sf::Sprite();
     jumpSprite->setTexture(*idleTexture);
     jumpSprite->setTextureRect(sf::IntRect(75,19,16,27));
@@ -52,6 +49,18 @@ Player::Player(sf::Vector2f position, std::string name) : Object(position){
             movementSprite[i]->setTextureRect(sf::IntRect(0,1158,540,579));
         }
     }
+    int count = 0;
+    for(int height = 0; height < 2; height++){
+        for(int width = 0; (width < 8) && count < 12; width++, count++){
+            std::cout << count << " " << width << " " << height << "\n";
+            idleSprite.push_back(new sf::Sprite());
+            idleSprite[count]->setTexture(*idleTexture);
+            idleSprite[count]->setTextureRect(sf::IntRect(537 * width, height * 531, 537, 531));
+        }
+    }
+    
+
+    
     
     maxHp = PLAYER_MAX_HP;
     hp = maxHp;
@@ -63,12 +72,15 @@ void Player::update()
         std::cout << position.x << "," << position.y << "\n";
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
-        //position.x -= 43;
+        position.x -= 43;
         if(direction == Direction::Right){
             changedDirection = true;
             position.x += movementSprite[0]->getGlobalBounds().width;
-            idleSprite->scale(-1.f, 1.f);
+            //idleSprite->scale(-1.f, 1.f);
             for(sf::Sprite* sprite : movementSprite){
+                sprite->scale(-1.f, 1.f);
+            }
+            for(sf::Sprite* sprite : idleSprite){
                 sprite->scale(-1.f, 1.f);
             }
                
@@ -79,12 +91,15 @@ void Player::update()
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
-        //position.x += 43;
+        position.x += 43;
         if(direction == Direction::Left){
             changedDirection = true;
             position.x -= movementSprite[0]->getGlobalBounds().width;
-            idleSprite->scale(-1.f, 1.f);
+           // idleSprite->scale(-1.f, 1.f);
             for(sf::Sprite* sprite : movementSprite){
+                sprite->scale(-1.f, 1.f);
+            }
+            for(sf::Sprite* sprite : idleSprite){
                 sprite->scale(-1.f, 1.f);
             }
         }
@@ -113,7 +128,53 @@ void Player::update()
         std::cout << movementFrame;
         std::cout << movementSprite.size();
         ++movementFrame %= movementSprite.size();
+    } else {
+        
+        ++idleFrame %= idleSprite.size();
     }
+}
+
+
+
+void Player::draw(sf::RenderWindow* window){
+    
+    
+    
+    if (isJumping) {
+        //TODO
+        jumpSprite->setPosition(position);
+        window->draw(*jumpSprite);
+    } else if (isMoving ) {
+        //Running
+        
+        sf::Vector2f spritePosition;
+        if(direction == Direction::Right){
+            spritePosition  = sf::Vector2f(position.x - 395, position.y - 310);
+        } else {
+            spritePosition  = sf::Vector2f(position.x - 145, position.y - 310);
+        }
+        
+        movementSprite[movementFrame]->setPosition(spritePosition);
+        window->draw(*movementSprite[movementFrame]);
+    }else {
+        //Idle
+        std:: cout << "IDLE " << idleFrame << "/" <<idleSprite.size() ;
+        sf::Vector2f spritePosition;
+        if(direction == Direction::Right){
+            spritePosition  = sf::Vector2f(position.x - 352, position.y - 285);
+        } else {
+            spritePosition  = sf::Vector2f(position.x - 185, position.y - 285);
+        }
+        
+        idleSprite[idleFrame]->setPosition(spritePosition);
+        window->draw(*idleSprite[idleFrame]);
+        
+        
+    }
+    
+    
+    
+    
 }
 
 

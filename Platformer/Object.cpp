@@ -14,7 +14,6 @@ Object::Object(sf::Vector2f position){
     changedDirection = false;
     idleTexture = nullptr;
     jumpTexture = nullptr;
-    idleSprite = nullptr;
     jumpSprite = nullptr;
     isJumping = false;
     isMoving  = false;
@@ -32,9 +31,8 @@ void Object::draw(sf::RenderWindow* window){
         movementSprite[movementFrame]->setPosition(position);
         window->draw(*movementSprite[movementFrame]);
     }else {
-        
-        idleSprite->setPosition(position);
-        window->draw(*idleSprite);
+        idleSprite[idleFrame]->setPosition(position);
+        window->draw(*idleSprite[idleFrame]);
         
     }
         

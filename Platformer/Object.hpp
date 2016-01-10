@@ -21,12 +21,13 @@ enum Direction{
 class Object{
 protected:
     int movementFrame;
+    int idleFrame;
     sf::Texture* idleTexture;
     //std::vector<sf::Texture*> movementTexture;
     sf::Texture* movementTexture;
     sf::Texture* jumpTexture;
-    sf::Sprite* idleSprite;
     std::vector<sf::Sprite*> movementSprite;
+    std::vector<sf::Sprite*> idleSprite;
     sf::Sprite* jumpSprite;
     
     bool isMoving;
@@ -39,7 +40,7 @@ protected:
 public:
     Object(sf::Vector2f position);
     
-    void draw(sf::RenderWindow* window);
+    virtual void draw(sf::RenderWindow* window);
     
 };
 

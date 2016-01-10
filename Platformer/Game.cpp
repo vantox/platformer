@@ -12,7 +12,7 @@
 
 Game::Game(){
     board = new Board();
-    player = new Player(sf::Vector2f(0,0), "Andrzej");
+    player = new Player(sf::Vector2f(500,750), "Andrzej");
 }
 
 void Game::update(){
