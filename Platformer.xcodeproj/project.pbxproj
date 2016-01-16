@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2426BCE61C354E76009E35D7 /* Run.png in Resources */ = {isa = PBXBuildFile; fileRef = 2426BCE51C354E76009E35D7 /* Run.png */; };
+		2426BCF01C46BBC3009E35D7 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2426BCEF1C46BBC3009E35D7 /* Block.cpp */; };
+		2426BCF31C46DC1F009E35D7 /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 2426BCF21C46DC1F009E35D7 /* block.png */; };
+		2426BCFC1C499E39009E35D7 /* Collidable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2426BCFA1C499E39009E35D7 /* Collidable.cpp */; };
 		242828161C304D5700CF244C /* player1.png in Resources */ = {isa = PBXBuildFile; fileRef = 242828151C304D5700CF244C /* player1.png */; };
 		87770A101C2F4B61002CFC56 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87770A0F1C2F4B61002CFC56 /* ResourcePath.mm */; };
 		87770A131C2F4B61002CFC56 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87770A121C2F4B61002CFC56 /* main.cpp */; };
@@ -27,6 +30,11 @@
 
 /* Begin PBXFileReference section */
 		2426BCE51C354E76009E35D7 /* Run.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Run.png; sourceTree = "<group>"; };
+		2426BCEF1C46BBC3009E35D7 /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
+		2426BCF11C46BBE4009E35D7 /* Block.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Block.hpp; sourceTree = "<group>"; };
+		2426BCF21C46DC1F009E35D7 /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
+		2426BCFA1C499E39009E35D7 /* Collidable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Collidable.cpp; sourceTree = "<group>"; };
+		2426BCFB1C499E39009E35D7 /* Collidable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Collidable.hpp; sourceTree = "<group>"; };
 		242828151C304D5700CF244C /* player1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player1.png; sourceTree = "<group>"; };
 		87770A0A1C2F4B61002CFC56 /* Platformer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Platformer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87770A0E1C2F4B61002CFC56 /* Platformer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Platformer-Info.plist"; sourceTree = "<group>"; };
@@ -85,6 +93,10 @@
 			isa = PBXGroup;
 			children = (
 				87770D471C2F6E34002CFC56 /* Config.hpp */,
+				2426BCF11C46BBE4009E35D7 /* Block.hpp */,
+				2426BCEF1C46BBC3009E35D7 /* Block.cpp */,
+				2426BCFA1C499E39009E35D7 /* Collidable.cpp */,
+				2426BCFB1C499E39009E35D7 /* Collidable.hpp */,
 				87770D4E1C302231002CFC56 /* Player.cpp */,
 				87770D4F1C302231002CFC56 /* Player.hpp */,
 				87770D4B1C301C3F002CFC56 /* Object.cpp */,
@@ -118,6 +130,7 @@
 		87770A141C2F4B61002CFC56 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2426BCF21C46DC1F009E35D7 /* block.png */,
 				8784B1031C42EA550060BB5E /* background.jpg */,
 				8784B1011C42DA100060BB5E /* Idle.png */,
 				2426BCE51C354E76009E35D7 /* Run.png */,
@@ -189,6 +202,7 @@
 			files = (
 				8784B1021C42DA100060BB5E /* Idle.png in Resources */,
 				87770A1C1C2F4B61002CFC56 /* icon.png in Resources */,
+				2426BCF31C46DC1F009E35D7 /* block.png in Resources */,
 				87770A1A1C2F4B61002CFC56 /* sansation.ttf in Resources */,
 				87770A181C2F4B61002CFC56 /* nice_music.ogg in Resources */,
 				2426BCE61C354E76009E35D7 /* Run.png in Resources */,
@@ -221,7 +235,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2426BCF01C46BBC3009E35D7 /* Block.cpp in Sources */,
 				87770D501C302231002CFC56 /* Player.cpp in Sources */,
+				2426BCFC1C499E39009E35D7 /* Collidable.cpp in Sources */,
 				87770A131C2F4B61002CFC56 /* main.cpp in Sources */,
 				87770D401C2F5382002CFC56 /* GameManager.cpp in Sources */,
 				87770D431C2F5AA7002CFC56 /* Board.cpp in Sources */,

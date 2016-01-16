@@ -10,20 +10,28 @@
 #define Game_hpp
 
 #include <stdio.h>
+#include <vector>
 #include "GameManager.hpp"
 
 class Board;
 class Player;
+class Block;
+class Collidable;
 
 class Game{
 private:
     Board* board;
     Player* player;
+    Block* block;
+    std::vector<Collidable*> collidables;
+    
     
 public:
     Game();
     void draw(sf::RenderWindow* window);
     void update();
+    std::vector<Collidable*>& getCollidables();
+    void addCollidable(Collidable* collidable);
 };
 
 #endif /* Game_hpp */

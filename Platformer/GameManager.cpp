@@ -92,3 +92,7 @@ void GameManager::startGame(){
 void GameManager::setGameState(GameState state){
     gameState = state;
 }
+
+Game* GameManager::getGame(){
+    return game;
+}

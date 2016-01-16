@@ -11,6 +11,7 @@
 #include "Config.hpp"
 
 Player::Player(sf::Vector2f position, std::string name) : Object(position){
+    setHitbox(sf::FloatRect(position.x - 110,position.y - 225,215,470));
     jumpTime = 0;
     movementFrame = 0;
     idleFrame = 0;
@@ -27,32 +28,41 @@ Player::Player(sf::Vector2f position, std::string name) : Object(position){
     jumpSprite= new sf::Sprite();
     jumpSprite->setTexture(*idleTexture);
     jumpSprite->setTextureRect(sf::IntRect(75,19,16,27));
-    for (int i = 0; i < 13; i++) {
-        
-        if(i < 6)
-        {
+//    for (int i = 0; i < 13; i++) {
+//        
+//        if(i < 6)
+//        {
+//            movementSprite.push_back(new sf::Sprite());
+//            movementSprite[i]->setTexture(*movementTexture);
+//            movementSprite[i]->setTextureRect(sf::IntRect(540*i,0,540,579));
+//        }
+//        if(i < 12 && i > 5)
+//        {
+//            movementSprite.push_back(new sf::Sprite());
+//            movementSprite[i]->setTexture(*movementTexture);
+//            movementSprite[i]->setTextureRect(sf::IntRect(540*(i-6),579,540,579));
+//        }
+//        
+//        if(i == 12)
+//        {
+//            movementSprite.push_back(new sf::Sprite());
+//            movementSprite[i]->setTexture(*movementTexture);
+//            movementSprite[i]->setTextureRect(sf::IntRect(0,1158,540,579));
+//        }
+//    }
+    int icount = 0;
+    for(int height = 0; height < 3; height++){
+        for(int width = 0; (width < 6) && icount < 13; width++, icount++){
+//            std::cout << icount << " " << width << " " << height << "\n";
             movementSprite.push_back(new sf::Sprite());
-            movementSprite[i]->setTexture(*movementTexture);
-            movementSprite[i]->setTextureRect(sf::IntRect(540*i,0,540,579));
-        }
-        if(i < 12 && i > 5)
-        {
-            movementSprite.push_back(new sf::Sprite());
-            movementSprite[i]->setTexture(*movementTexture);
-            movementSprite[i]->setTextureRect(sf::IntRect(540*(i-6),579,540,579));
-        }
-        
-        if(i == 12)
-        {
-            movementSprite.push_back(new sf::Sprite());
-            movementSprite[i]->setTexture(*movementTexture);
-            movementSprite[i]->setTextureRect(sf::IntRect(0,1158,540,579));
+            movementSprite[icount]->setTexture(*movementTexture);
+            movementSprite[icount]->setTextureRect(sf::IntRect(540 * width, height * 579, 540, 579));
         }
     }
     int count = 0;
     for(int height = 0; height < 2; height++){
         for(int width = 0; (width < 8) && count < 12; width++, count++){
-            std::cout << count << " " << width << " " << height << "\n";
+//            std::cout << count << " " << width << " " << height << "\n";
             idleSprite.push_back(new sf::Sprite());
             idleSprite[count]->setTexture(*idleTexture);
             idleSprite[count]->setTextureRect(sf::IntRect(537 * width, height * 531, 537, 531));
@@ -68,11 +78,13 @@ Player::Player(sf::Vector2f position, std::string name) : Object(position){
 
 void Player::update()
 {
-    if(position.x < 100)
-        std::cout << position.x << "," << position.y << "\n";
+    int lastHitboxLeft;
+    
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
-        position.x -= 43;
+        lastHitboxLeft = hitbox.left;
+        move(sf::Vector2f(- PLAYER_STEP, 0));
+        position.x -= hitbox.left - lastHitboxLeft;
         if(direction == Direction::Right){
             changedDirection = true;
             position.x += movementSprite[0]->getGlobalBounds().width;
@@ -91,7 +103,10 @@ void Player::update()
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
-        position.x += 43;
+        lastHitboxLeft = hitbox.left;
+        move(sf::Vector2f(PLAYER_STEP, 0));
+        position.x += hitbox.left - lastHitboxLeft;
+        position = sf::Vector2f(hitbox.left + hitbox.width / 2, hitbox.top + hitbox.height / 2 );
         if(direction == Direction::Left){
             changedDirection = true;
             position.x -= movementSprite[0]->getGlobalBounds().width;
@@ -125,8 +140,8 @@ void Player::update()
         isJumping = false;
     }
     if (isMoving) {
-        std::cout << movementFrame;
-        std::cout << movementSprite.size();
+//        std::cout << movementFrame;
+//        std::cout << movementSprite.size();
         ++movementFrame %= movementSprite.size();
     } else {
         
@@ -158,7 +173,7 @@ void Player::draw(sf::RenderWindow* window){
         window->draw(*movementSprite[movementFrame]);
     }else {
         //Idle
-        std:: cout << "IDLE " << idleFrame << "/" <<idleSprite.size() ;
+//        std:: cout << "IDLE " << idleFrame << "/" <<idleSprite.size() ;
         sf::Vector2f spritePosition;
         if(direction == Direction::Right){
             spritePosition  = sf::Vector2f(position.x - 352, position.y - 285);
