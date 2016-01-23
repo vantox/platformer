@@ -10,7 +10,7 @@
 #include "ResourcePath.hpp"
 #include "Config.hpp"
 
-Player::Player(sf::Vector2f position, std::string name) : Object(position){
+Player::Player(sf::Vector2f position, std::string name) :Object(position){
     setHitbox(sf::FloatRect(position.x - 110,position.y - 225,215,470));
     jumpTime = 0;
     movementFrame = 0;
@@ -186,7 +186,9 @@ void Player::draw(sf::RenderWindow* window){
         
         
     }
-    
+    sf::RectangleShape PlayerHitbox(sf::Vector2f(215, 470));
+    PlayerHitbox.setPosition(getHitbox().left,getHitbox().top);
+    window->draw(PlayerHitbox);
     
     
     
