@@ -51,12 +51,12 @@ void Collidable::move(Collidable *object, sf::Vector2f movement)
             hitbox.left = object->getHitbox().left - hitbox.width;
         }
     }
-//    if (movement.x < 0 && movement.y == 0) {
-//        hitbox.left -= movement.x;
-//        if(isCollidingWith(object)){
-//            hitbox.left = object->getHitbox().left + object->getHitbox().width;
-//        }
-//    }
+    if (movement.x < 0 && movement.y == 0) {
+        hitbox.left -= movement.x;
+        if(isCollidingWith(object)){
+            hitbox.left = object->getHitbox().left + object->getHitbox().width;
+        }
+    }
 }
 
 
