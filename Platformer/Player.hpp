@@ -12,8 +12,9 @@
 #include <stdio.h>
 #include <string>
 #include "Object.hpp"
+#include "Collidable.hpp"
 
-class Player : public Object{
+class Player : public Object, public Collidable{
 private:
     int jumpTime;
     int maxHp;
