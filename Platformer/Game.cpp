@@ -14,8 +14,8 @@
 
 Game::Game(){
     board = new Board();
-    player = new Player(sf::Vector2f(1000,750), "Andrzej");
-    block = new Block(sf::Vector2f(500,700));
+    player = new Player(sf::Vector2f(1000,700), "Andrzej");
+    block = new Block(sf::Vector2f(1000,200));
     block2 = new Block(sf::Vector2f(1500,700));
     block3 = new Block(sf::Vector2f(1700,700));
     addCollidable(block);addCollidable(block2);addCollidable(block3);
@@ -32,8 +32,8 @@ void Game::update(){
 
 void Game::draw(sf::RenderWindow* window){
     board->draw(window);
-    player->draw(window);
     block->draw(window);block2->draw(window);block3->draw(window);
+    player->draw(window);
 }
 
 std::vector<Collidable*>& Game::getCollidables(){

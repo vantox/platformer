@@ -80,7 +80,7 @@ Player::Player(sf::Vector2f position, std::string name) :Object(position){
 
 void Player::update()
 {
-    
+    move(sf::Vector2f(0,-2));
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
         move(sf::Vector2f(- PLAYER_STEP, 0));
@@ -169,7 +169,7 @@ void Player::draw(sf::RenderWindow* window){
         //std:: cout << "IDLE " << idleFrame << "/" <<idleSprite.size() ;
         sf::Vector2f spritePosition;
         if(direction == Direction::Right){
-            spritePosition  = sf::Vector2f(hitbox.left - 240, hitbox.top - 55);
+            spritePosition  = sf::Vector2f(hitbox.left - 250, hitbox.top - 55);
         } else {
             spritePosition  = sf::Vector2f(hitbox.left + 465, hitbox.top - 55);
         }
@@ -179,9 +179,9 @@ void Player::draw(sf::RenderWindow* window){
         
         
     }
-    sf::RectangleShape PlayerHitbox(sf::Vector2f(215, 470));
-    PlayerHitbox.setPosition(getHitbox().left,getHitbox().top);
-    window->draw(PlayerHitbox);
+//    sf::RectangleShape PlayerHitbox(sf::Vector2f(215, 470));
+//    PlayerHitbox.setPosition(getHitbox().left,getHitbox().top);
+//    window->draw(PlayerHitbox);
     
     
     
@@ -191,6 +191,7 @@ void Player::draw(sf::RenderWindow* window){
 void Player::move(sf::Vector2f movement)
 {
     hitbox.left += movement.x;
+    hitbox.top += movement.y;
     for (Collidable* collidable: GameManager::get()->getGame()->getCollidables()) {
         move(collidable, movement);
     }
@@ -213,6 +214,16 @@ void Player::move(Collidable *object, sf::Vector2f movement)
         if(isCollidingWith(object)){
 //            std::cout << "koliduje z hitboxem:"<< object->getHitbox().left << "  " << object->getHitbox().top << " " << object->getHitbox().width << " " << object->getHitbox().height << "\n";
             hitbox.left = object->getHitbox().left + object->getHitbox().width;
+        }
+    }
+    if (movement.y > 0 && movement.x == 0) {
+        if (isCollidingWith(object)) {
+            hitbox.top = object->getHitbox().top - hitbox.height;
+        }
+    }
+    else if (movement.y < 0 && movement.x == 0){
+        if (isCollidingWith(object)) {
+            hitbox.top = object->getHitbox().top + object->getHitbox().height;
         }
     }
     
