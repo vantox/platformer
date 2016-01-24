@@ -17,7 +17,7 @@ Block::Block(sf::Vector2f position) : Object(position){
     setHitbox(sf::FloatRect(position.x - size/2,position.y - size/2,size,size));
     
     idleTexture  = new sf::Texture();
-    if (!idleTexture->loadFromFile(resourcePath() + "icon.jpg"))
+    if (!idleTexture->loadFromFile(resourcePath() + "block.png"))
     {
         std::cout << "Block texture not loaded";
     }

@@ -9,6 +9,8 @@
 #include "Player.hpp"
 #include "ResourcePath.hpp"
 #include "Config.hpp"
+#include "GameManager.hpp"
+#include "Game.hpp"
 
 Player::Player(sf::Vector2f position, std::string name) :Object(position){
     setHitbox(sf::FloatRect(position.x - 110,position.y - 225,215,470));
@@ -78,17 +80,11 @@ Player::Player(sf::Vector2f position, std::string name) :Object(position){
 
 void Player::update()
 {
-    int lastHitboxLeft;
     
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
-        lastHitboxLeft = hitbox.left;
         move(sf::Vector2f(- PLAYER_STEP, 0));
-        position.x -= hitbox.left - lastHitboxLeft;
         if(direction == Direction::Right){
-            changedDirection = true;
-            position.x += movementSprite[0]->getGlobalBounds().width;
-            //idleSprite->scale(-1.f, 1.f);
             for(sf::Sprite* sprite : movementSprite){
                 sprite->scale(-1.f, 1.f);
             }
@@ -103,14 +99,10 @@ void Player::update()
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
-        lastHitboxLeft = hitbox.left;
         move(sf::Vector2f(PLAYER_STEP, 0));
-        position.x += hitbox.left - lastHitboxLeft;
-        position = sf::Vector2f(hitbox.left + hitbox.width / 2, hitbox.top + hitbox.height / 2 );
+        
+        std::cout << " hitbox: "<< hitbox.left << " " << hitbox.top << "\n";
         if(direction == Direction::Left){
-            changedDirection = true;
-            position.x -= movementSprite[0]->getGlobalBounds().width;
-           // idleSprite->scale(-1.f, 1.f);
             for(sf::Sprite* sprite : movementSprite){
                 sprite->scale(-1.f, 1.f);
             }
@@ -133,7 +125,7 @@ void Player::update()
     }
     if (jumpTime > 0) {
         jumpTime -= 1;
-        position.y -= 1;
+//        position.y -= 1;
         isJumping = true;
     }
     if (jumpTime == 0) {
@@ -153,8 +145,9 @@ void Player::update()
 
 void Player::draw(sf::RenderWindow* window){
     
-    
-    
+//    std::cout << " position: "<< position.x << " " << position.y << "\n";
+//    std::cout << " hitbox: "<< hitbox.left << " " << hitbox.top << "\n";
+//    
     if (isJumping) {
         //TODO
         jumpSprite->setPosition(position);
@@ -164,21 +157,21 @@ void Player::draw(sf::RenderWindow* window){
         
         sf::Vector2f spritePosition;
         if(direction == Direction::Right){
-            spritePosition  = sf::Vector2f(position.x - 395, position.y - 310);
+            spritePosition  = sf::Vector2f(hitbox.left - 293, hitbox.top - 90);
         } else {
-            spritePosition  = sf::Vector2f(position.x - 145, position.y - 310);
+            spritePosition  = sf::Vector2f(hitbox.left + 508, hitbox.top - 90);
         }
         
         movementSprite[movementFrame]->setPosition(spritePosition);
         window->draw(*movementSprite[movementFrame]);
     }else {
         //Idle
-//        std:: cout << "IDLE " << idleFrame << "/" <<idleSprite.size() ;
+        //std:: cout << "IDLE " << idleFrame << "/" <<idleSprite.size() ;
         sf::Vector2f spritePosition;
         if(direction == Direction::Right){
-            spritePosition  = sf::Vector2f(position.x - 352, position.y - 285);
+            spritePosition  = sf::Vector2f(hitbox.left - 240, hitbox.top - 55);
         } else {
-            spritePosition  = sf::Vector2f(position.x - 185, position.y - 285);
+            spritePosition  = sf::Vector2f(hitbox.left + 465, hitbox.top - 55);
         }
         
         idleSprite[idleFrame]->setPosition(spritePosition);
@@ -193,5 +186,40 @@ void Player::draw(sf::RenderWindow* window){
     
     
 }
+
+
+void Player::move(sf::Vector2f movement)
+{
+    hitbox.left += movement.x;
+    for (Collidable* collidable: GameManager::get()->getGame()->getCollidables()) {
+        move(collidable, movement);
+    }
+    
+}
+
+void Player::move(Collidable *object, sf::Vector2f movement)
+{
+   
+    if (movement.x > 0 && movement.y == 0) {
+//        hitbox.left += movement.x;
+        if(isCollidingWith(object)){
+//            std::cout << "koliduje z hitboxem:"<< object->getHitbox().left << "  " << object->getHitbox().top << " " << object->getHitbox().width << " " << object->getHitbox().height << "\n";
+            hitbox.left = object->getHitbox().left - hitbox.width;
+            std::cout << "kolizja, hitbox left: "<<hitbox.left << "\n";
+        }
+    }
+    else if (movement.x < 0 && movement.y == 0) {
+//        hitbox.left += movement.x;
+        if(isCollidingWith(object)){
+//            std::cout << "koliduje z hitboxem:"<< object->getHitbox().left << "  " << object->getHitbox().top << " " << object->getHitbox().width << " " << object->getHitbox().height << "\n";
+            hitbox.left = object->getHitbox().left + object->getHitbox().width;
+        }
+    }
+    
+    std::cout << "hitbox left z move:"<< hitbox.left<< "\n";
+    
+    //position.x += hitbox.left - lastHitboxLeft;
+}
+
 
 

@@ -34,31 +34,6 @@ bool Collidable::isCollidingWith(Collidable* object)
         return 0;
 }
 
-void Collidable::move(sf::Vector2f movement)
-{
-        for (Collidable* collidable: GameManager::get()->getGame()->getCollidables()) {
-            move(collidable, movement);
-        }
-    
-}
-
-void Collidable::move(Collidable *object, sf::Vector2f movement)
-{
-    
-    if (movement.x > 0 && movement.y == 0) {
-        hitbox.left += movement.x;
-        if(isCollidingWith(object)){
-            hitbox.left = object->getHitbox().left - hitbox.width;
-        }
-    }
-    if (movement.x < 0 && movement.y == 0) {
-        hitbox.left -= movement.x;
-        if(isCollidingWith(object)){
-            hitbox.left = object->getHitbox().left + object->getHitbox().width;
-        }
-    }
-}
-
 
 
 

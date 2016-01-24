@@ -22,7 +22,7 @@ class Game{
 private:
     Board* board;
     Player* player;
-    Block* block;
+    Block* block;Block* block2;Block* block3;
     std::vector<Collidable*> collidables;
     
     
