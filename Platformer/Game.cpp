@@ -10,18 +10,21 @@
 #include "Board.hpp"
 #include "Player.hpp"
 #include "Block.hpp"
+#include "Config.hpp"
 #include <iostream>
 
 Game::Game(){
     board = new Board();
-    player = new Player(sf::Vector2f(1000,700), "Andrzej");
-    block = new Block(sf::Vector2f(1000,200));
+    player = new Player(sf::Vector2f(1000,500), "Andrzej");
+    block = new Block(sf::Vector2f(1000,900));
     block2 = new Block(sf::Vector2f(1500,700));
     block3 = new Block(sf::Vector2f(1700,700));
     addCollidable(block);addCollidable(block2);addCollidable(block3);
+    addGravitable(player);
 }
 
 void Game::update(){
+    updateGravitables();
     board->update();
     player->update();
     block->update();
@@ -43,3 +46,21 @@ std::vector<Collidable*>& Game::getCollidables(){
 void Game::addCollidable(Collidable* collidable){
     collidables.push_back(collidable);
 }
+
+void Game::addGravitable(Collidable *gravitable){
+    gravitables.push_back(gravitable);
+}
+
+std::vector<Collidable*>& Game::getGravitables(){
+    return gravitables;
+}
+
+void Game::updateGravitables(){
+    for(Collidable* gravitable : gravitables){
+        gravitable->move(sf::Vector2f(0, GRAVITY));
+    }
+}
+
+
+
+

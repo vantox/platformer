@@ -25,8 +25,6 @@ public:
     Player(sf::Vector2f position, std::string name);
     void update();
     void draw(sf::RenderWindow* window);
-    void move(sf::Vector2f movement);
-    void move(Collidable* object, sf::Vector2f movement);
     
 };
 

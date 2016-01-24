@@ -80,7 +80,7 @@ Player::Player(sf::Vector2f position, std::string name) :Object(position){
 
 void Player::update()
 {
-    move(sf::Vector2f(0,-2));
+    
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
         move(sf::Vector2f(- PLAYER_STEP, 0));
@@ -188,49 +188,6 @@ void Player::draw(sf::RenderWindow* window){
 }
 
 
-void Player::move(sf::Vector2f movement)
-{
-    hitbox.left += movement.x;
-    hitbox.top += movement.y;
-    for (Collidable* collidable: GameManager::get()->getGame()->getCollidables()) {
-        move(collidable, movement);
-    }
-    
-}
-
-void Player::move(Collidable *object, sf::Vector2f movement)
-{
-   
-    if (movement.x > 0 && movement.y == 0) {
-//        hitbox.left += movement.x;
-        if(isCollidingWith(object)){
-//            std::cout << "koliduje z hitboxem:"<< object->getHitbox().left << "  " << object->getHitbox().top << " " << object->getHitbox().width << " " << object->getHitbox().height << "\n";
-            hitbox.left = object->getHitbox().left - hitbox.width;
-            std::cout << "kolizja, hitbox left: "<<hitbox.left << "\n";
-        }
-    }
-    else if (movement.x < 0 && movement.y == 0) {
-//        hitbox.left += movement.x;
-        if(isCollidingWith(object)){
-//            std::cout << "koliduje z hitboxem:"<< object->getHitbox().left << "  " << object->getHitbox().top << " " << object->getHitbox().width << " " << object->getHitbox().height << "\n";
-            hitbox.left = object->getHitbox().left + object->getHitbox().width;
-        }
-    }
-    if (movement.y > 0 && movement.x == 0) {
-        if (isCollidingWith(object)) {
-            hitbox.top = object->getHitbox().top - hitbox.height;
-        }
-    }
-    else if (movement.y < 0 && movement.x == 0){
-        if (isCollidingWith(object)) {
-            hitbox.top = object->getHitbox().top + object->getHitbox().height;
-        }
-    }
-    
-    std::cout << "hitbox left z move:"<< hitbox.left<< "\n";
-    
-    //position.x += hitbox.left - lastHitboxLeft;
-}
 
 
 

@@ -35,6 +35,50 @@ bool Collidable::isCollidingWith(Collidable* object)
 }
 
 
+void Collidable::move(sf::Vector2f movement)
+{
+    hitbox.left += movement.x;
+    hitbox.top += movement.y;
+    for (Collidable* collidable: GameManager::get()->getGame()->getCollidables()) {
+        move(collidable, movement);
+    }
+    
+}
+
+void Collidable::move(Collidable *object, sf::Vector2f movement)
+{
+    
+    if (movement.x > 0 && movement.y == 0) {
+        //        hitbox.left += movement.x;
+        if(isCollidingWith(object)){
+            //            std::cout << "koliduje z hitboxem:"<< object->getHitbox().left << "  " << object->getHitbox().top << " " << object->getHitbox().width << " " << object->getHitbox().height << "\n";
+            hitbox.left = object->getHitbox().left - hitbox.width;
+            std::cout << "kolizja, hitbox left: "<<hitbox.left << "\n";
+        }
+    }
+    else if (movement.x < 0 && movement.y == 0) {
+        //        hitbox.left += movement.x;
+        if(isCollidingWith(object)){
+            //            std::cout << "koliduje z hitboxem:"<< object->getHitbox().left << "  " << object->getHitbox().top << " " << object->getHitbox().width << " " << object->getHitbox().height << "\n";
+            hitbox.left = object->getHitbox().left + object->getHitbox().width;
+        }
+    }
+    else if (movement.y > 0 && movement.x == 0) {
+        if (isCollidingWith(object)) {
+            hitbox.top = object->getHitbox().top - hitbox.height;
+        }
+    }
+    else if (movement.y < 0 && movement.x == 0){
+        if (isCollidingWith(object)) {
+            hitbox.top = object->getHitbox().top + object->getHitbox().height;
+        }
+    }
+    
+    //std::cout << "hitbox left z move:"<< hitbox.left<< "\n";
+    
+    //position.x += hitbox.left - lastHitboxLeft;
+}
+
 
 
 

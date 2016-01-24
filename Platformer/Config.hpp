@@ -16,5 +16,6 @@ const int TO_NEXT_CHANGE = 8;
 const int PLAYER_MAX_HP = 100;
 const int PLAYER_SPEED = 1;
 const int PLAYER_STEP = 43;
+const int GRAVITY = 15;
 
 #endif /* Config_h */

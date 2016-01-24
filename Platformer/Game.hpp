@@ -24,6 +24,7 @@ private:
     Player* player;
     Block* block;Block* block2;Block* block3;
     std::vector<Collidable*> collidables;
+    std::vector<Collidable*> gravitables;
     
     
 public:
@@ -32,6 +33,9 @@ public:
     void update();
     std::vector<Collidable*>& getCollidables();
     void addCollidable(Collidable* collidable);
+    std::vector<Collidable*>& getGravitables();
+    void addGravitable(Collidable* gravitable);
+    void updateGravitables();
 };
 
 #endif /* Game_hpp */

@@ -23,6 +23,8 @@ public:
     sf::FloatRect getHitbox();
     void setHitbox(sf::FloatRect hitbox);
     bool isCollidingWith(Collidable* object);
+    void move(sf::Vector2f movement);
+    void move(Collidable* object, sf::Vector2f movement);
 };
 
 
