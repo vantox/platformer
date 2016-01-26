@@ -15,7 +15,7 @@ const int BOARD_WIDTH = 1920;
 const int TO_NEXT_CHANGE = 8;
 const int PLAYER_MAX_HP = 100;
 const int PLAYER_SPEED = 1;
-const int PLAYER_STEP = 43;
-const int GRAVITY = 15;
+const int PLAYER_STEP = 22;
+const int GRAVITY = 22;
 
 #endif /* Config_h */

@@ -17,8 +17,8 @@ Game::Game(){
     board = new Board();
     player = new Player(sf::Vector2f(1000,500), "Andrzej");
     block = new Block(sf::Vector2f(1000,900));
-    block2 = new Block(sf::Vector2f(1500,700));
-    block3 = new Block(sf::Vector2f(1700,700));
+    block2 = new Block(sf::Vector2f(1200,900));
+    block3 = new Block(sf::Vector2f(1400,900));
     addCollidable(block);addCollidable(block2);addCollidable(block3);
     addGravitable(player);
 }

@@ -15,6 +15,7 @@
 
 Collidable::Collidable(){
     hitbox = sf::FloatRect(0,0,0,0);
+    isFalling = false;
 }
 sf::FloatRect Collidable::getHitbox()
 {
@@ -66,10 +67,12 @@ void Collidable::move(Collidable *object, sf::Vector2f movement)
     else if (movement.y > 0 && movement.x == 0) {
         if (isCollidingWith(object)) {
             hitbox.top = object->getHitbox().top - hitbox.height;
+            isFalling = false;
         }
     }
     else if (movement.y < 0 && movement.x == 0){
         if (isCollidingWith(object)) {
+            isFalling = true;
             hitbox.top = object->getHitbox().top + object->getHitbox().height;
         }
     }

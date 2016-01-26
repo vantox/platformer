@@ -26,9 +26,13 @@ protected:
     //std::vector<sf::Texture*> movementTexture;
     sf::Texture* movementTexture;
     sf::Texture* jumpTexture;
+    sf::Texture* jumpStartTexture;
+    sf::Texture* fallingTexture;
+    std::vector<sf::Sprite*> jumpStartSprite;
     std::vector<sf::Sprite*> movementSprite;
     std::vector<sf::Sprite*> idleSprite;
     sf::Sprite* jumpSprite;
+    sf::Sprite* fallingSprite;
     
     bool isMoving;
     bool isJumping;

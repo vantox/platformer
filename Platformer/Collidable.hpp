@@ -25,6 +25,7 @@ public:
     bool isCollidingWith(Collidable* object);
     void move(sf::Vector2f movement);
     void move(Collidable* object, sf::Vector2f movement);
+    bool isFalling;
 };
 
 

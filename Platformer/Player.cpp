@@ -18,6 +18,11 @@ Player::Player(sf::Vector2f position, std::string name) :Object(position){
     movementFrame = 0;
     idleFrame = 0;
     idleTexture  = new sf::Texture();
+    jumpStartTexture  = new sf::Texture();
+    if (!jumpStartTexture->loadFromFile(resourcePath() + "JumpStart.png"))
+    {
+        std::cout << "Player jumpstart texture not loaded";
+    }
     if (!idleTexture->loadFromFile(resourcePath() + "Idle.png"))
     {
         std::cout << "Player texture not loaded";
@@ -27,9 +32,28 @@ Player::Player(sf::Vector2f position, std::string name) :Object(position){
     {
         std::cout << "Player texture not loaded";
     }
-    jumpSprite= new sf::Sprite();
-    jumpSprite->setTexture(*idleTexture);
-    jumpSprite->setTextureRect(sf::IntRect(75,19,16,27));
+    
+    fallingTexture  = new sf::Texture();
+    fallingSprite = new sf::Sprite();
+    if (!fallingTexture->loadFromFile(resourcePath() + "JumpFall.png"))
+    {
+        std::cout << "Player texture not loaded";
+    }
+    jumpTexture  = new sf::Texture();
+    jumpSprite = new sf::Sprite();
+    if (!jumpTexture->loadFromFile(resourcePath() + "Jump.png"))
+    {
+        std::cout << "Player texture not loaded";
+    }
+    jumpSprite->setTexture(*jumpTexture);
+    jumpSprite->setTextureRect(sf::IntRect(0,0,459,525));
+    fallingSprite->setTexture(*fallingTexture);
+    fallingSprite->setTextureRect(sf::IntRect(0,0,631,639));
+    
+    
+//    jumpSprite= new sf::Sprite();
+//    jumpSprite->setTexture(*idleTexture);
+//    jumpSprite->setTextureRect(sf::IntRect(75,19,16,27));
 //    for (int i = 0; i < 13; i++) {
 //        
 //        if(i < 6)
@@ -70,6 +94,15 @@ Player::Player(sf::Vector2f position, std::string name) :Object(position){
             idleSprite[count]->setTextureRect(sf::IntRect(537 * width, height * 531, 537, 531));
         }
     }
+    int scount = 0;
+    for(int height = 0; height < 2; height++){
+        for(int width = 0; (width < 8) && scount < 10; width++, scount++){
+            jumpStartSprite.push_back(new sf::Sprite());
+            jumpStartSprite[scount]->setTexture(*jumpStartTexture);
+            jumpStartSprite[scount]->setTextureRect(sf::IntRect(950 * width, height * 916, 950, 916));
+        }
+    }
+    
     
 
     
@@ -80,7 +113,7 @@ Player::Player(sf::Vector2f position, std::string name) :Object(position){
 
 void Player::update()
 {
-    
+    int y = position.y;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
         move(sf::Vector2f(- PLAYER_STEP, 0));
@@ -116,21 +149,24 @@ void Player::update()
     else {
         isMoving = false;
     }
-        
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-        
-        if (jumpTime == 0) {
-            jumpTime = 60;
+    
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+            if (jumpTime == 0 && !isFalling)
+                jumpTime = 24;
+            isJumping = true;
         }
-    }
-    if (jumpTime > 0) {
-        jumpTime -= 1;
-//        position.y -= 1;
-        isJumping = true;
+        if (jumpTime > 0 && !isFalling) {
+            jumpTime--;
+            move(sf::Vector2f(0,-(2*PLAYER_STEP)));
+        }else{
+            jumpTime = 0;
+            isJumping = false;
     }
     if (jumpTime == 0) {
+        isFalling = true;
         isJumping = false;
     }
+        
     if (isMoving) {
 //        std::cout << movementFrame;
 //        std::cout << movementSprite.size();
@@ -139,6 +175,7 @@ void Player::update()
         
         ++idleFrame %= idleSprite.size();
     }
+    std::cout << "isfalling: " << isFalling << "isJumping: " << isJumping << std::endl;
 }
 
 
@@ -147,11 +184,20 @@ void Player::draw(sf::RenderWindow* window){
     
 //    std::cout << " position: "<< position.x << " " << position.y << "\n";
 //    std::cout << " hitbox: "<< hitbox.left << " " << hitbox.top << "\n";
-//    
-    if (isJumping) {
-        //TODO
-        jumpSprite->setPosition(position);
-        window->draw(*jumpSprite);
+//
+    if (isFalling) {
+            fallingSprite->setPosition((sf::Vector2f(hitbox.left - 400,hitbox.top - 115)));
+            window->draw(*fallingSprite);
+    }else if (isJumping) {
+        if (jumpTime > 14) {
+            jumpStartSprite[-(jumpTime-24)]->setPosition((sf::Vector2f(hitbox.left - 315,hitbox.top - 315)));
+            window->draw(*jumpStartSprite[-(jumpTime-24)]);
+            
+        }else
+        {
+            jumpSprite->setPosition((sf::Vector2f(hitbox.left - 225,hitbox.top - 45)));
+            window->draw(*jumpSprite);
+        }
     } else if (isMoving ) {
         //Running
         
