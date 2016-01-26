@@ -162,7 +162,7 @@ void Player::update()
             jumpTime = 0;
             isJumping = false;
     }
-    if (jumpTime == 0) {
+    if (isJumping && jumpTime == 0) {
         isFalling = true;
         isJumping = false;
     }

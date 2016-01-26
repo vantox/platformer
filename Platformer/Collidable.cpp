@@ -54,7 +54,6 @@ void Collidable::move(Collidable *object, sf::Vector2f movement)
         if(isCollidingWith(object)){
             //            std::cout << "koliduje z hitboxem:"<< object->getHitbox().left << "  " << object->getHitbox().top << " " << object->getHitbox().width << " " << object->getHitbox().height << "\n";
             hitbox.left = object->getHitbox().left - hitbox.width;
-            std::cout << "kolizja, hitbox left: "<<hitbox.left << "\n";
         }
     }
     else if (movement.x < 0 && movement.y == 0) {
@@ -65,9 +64,9 @@ void Collidable::move(Collidable *object, sf::Vector2f movement)
         }
     }
     else if (movement.y > 0 && movement.x == 0) {
-        if (isCollidingWith(object)) {
-            hitbox.top = object->getHitbox().top - hitbox.height;
+        if (isCollidingWith(object)) {            hitbox.top = object->getHitbox().top - hitbox.height;
             isFalling = false;
+
         }
     }
     else if (movement.y < 0 && movement.x == 0){
